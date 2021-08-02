@@ -381,6 +381,19 @@ extern const struct _mp_obj_module_t mp_module_touchscreen;
 #if CONFIG_MICROPYTHON_ULAB_ENALBE
     #define MODULE_ULAB_ENABLED (1)
 #endif
+#if CONFIG_MICROPYTHON_SECP256K1_ENABLE
+    #define MODULE_SECP256K1_ENABLED (1)
+#endif
+#if CONFIG_MICROPYTHON_HASHLIB_ENABLE
+    #define MODULE_HASHLIB_ENABLED (1)
+#endif
+#if CONFIG_MICROPYTHON_QRCODE_ENABLE
+    #define MODULE_QRCODE_ENABLED (1)
+#endif
+#if CONFIG_MICROPYTHON_UEMBIT_ENABLE
+    #define MODULE_UEMBIT_ENABLED (1)
+#endif
+
 /////////////////////////////////////////////////////////////////////////////////
 
 #define MICROPY_PORT_BUILTIN_MODULES \
@@ -423,7 +436,8 @@ extern const struct _mp_obj_module_t mp_module_touchscreen;
     { MP_OBJ_NEW_QSTR(MP_QSTR_re), (mp_obj_t)&mp_module_ure }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_struct), (mp_obj_t)&mp_module_ustruct }, \
     { MP_OBJ_NEW_QSTR(MP_QSTR_zlib), (mp_obj_t)&mp_module_uzlib }, \
-    { MP_OBJ_NEW_QSTR(MP_QSTR_hashlib), (mp_obj_t)&mp_module_uhashlib_maix }, \
+    // { MP_OBJ_NEW_QSTR(MP_QSTR_hashlib), (mp_obj_t)&mp_module_uhashlib_maix }, \
+    { MP_OBJ_NEW_QSTR(MP_QSTR_io), (mp_obj_t)&mp_module_io }, \
 
 #define MICROPY_PY_MACHINE                  (1)
 #define MICROPY_PY_MACHINE_PIN_MAKE_NEW     mp_pin_make_new

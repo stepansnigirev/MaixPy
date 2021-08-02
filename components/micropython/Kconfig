@@ -89,6 +89,22 @@ menu "Micropython configurations"
 			bool "Enable ulab module(a numpy-like fast vector module)"
 			default y
 
+		config MICROPYTHON_SECP256K1_ENABLE
+			bool "Enable secp256k1-embedded module"
+			default y
+
+		config MICROPYTHON_HASHLIB_ENABLE
+			bool "Enable hashlib module"
+			default y
+
+		config MICROPYTHON_QRCODE_ENABLE
+			bool "Enable qrcode module"
+			default y
+
+		config MICROPYTHON_UEMBIT_ENABLE
+			bool "Enable uembit module"
+			default n
+
 		config MICROPYTHON_KMODEL_V4_SUPPORT
 			bool "support v4 kmodel"
 			default n

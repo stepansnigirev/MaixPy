@@ -358,6 +358,38 @@ if(CONFIG_COMPONENT_MICROPYTHON_ENABLE)
         append_srcs_dir(ADD_SRCS "port/src/ulab/micropython-ulab/code")
     endif()
 
+    if(CONFIG_MICROPYTHON_SECP256K1_ENABLE)
+        list(APPEND ADD_INCLUDE "${mpy_port_dir}/src/secp256k1-embedded/secp256k1"
+                                "${mpy_port_dir}/src/secp256k1-embedded/secp256k1/src"
+                                "${mpy_port_dir}/src/secp256k1-embedded/mpy/config"
+                                )
+        append_srcs_dir(ADD_SRCS "port/src/secp256k1-embedded/secp256k1/src")
+        append_srcs_dir(ADD_SRCS "port/src/secp256k1-embedded/mpy/config")
+        append_srcs_dir(ADD_SRCS "port/src/secp256k1-embedded/mpy")  
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DHAVE_CONFIG_H")
+    endif()
+    if(CONFIG_MICROPYTHON_HASHLIB_ENABLE)
+        list(APPEND ADD_INCLUDE "${mpy_port_dir}/src/uhashlib/crypto"
+                                "${mpy_port_dir}/src/uhashlib"
+                                )
+        append_srcs_dir(ADD_SRCS "port/src/uhashlib/crypto")
+        append_srcs_dir(ADD_SRCS "port/src/uhashlib")
+    endif()
+    if(CONFIG_MICROPYTHON_QRCODE_ENABLE)
+        list(APPEND ADD_INCLUDE "${mpy_port_dir}/src/qrcode/qrcodegen"
+                                "${mpy_port_dir}/src/qrcode"
+                                )
+        append_srcs_dir(ADD_SRCS "port/src/qrcode/qrcodegen")
+        append_srcs_dir(ADD_SRCS "port/src/qrcode")
+    endif()
+    if(CONFIG_MICROPYTHON_UEMBIT_ENABLE)
+        list(APPEND ADD_INCLUDE "${mpy_port_dir}/src/uembit/include"
+                                "${mpy_port_dir}/src/uembit"
+                                )
+        append_srcs_dir(ADD_SRCS "port/src/uembit/src")
+        append_srcs_dir(ADD_SRCS "port/src/uembit")
+    endif()
+
     if(CONFIG_MICROPY_SSL_ENABLE)
         list(APPEND ADD_INCLUDE "${mpy_core_dir}/lib/mbedtls/include")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DMBEDTLS_CONFIG_FILE='\"${mpy_port_dir}/src/mbedtls/include/mbedtls_config.h\"'")
